@@ -1,0 +1,44 @@
+﻿<div class="content-header">
+    <h1>
+        Units <small>This page displays a list of your units</small>
+    </h1>
+</div>
+<section class="content">
+    <div class="box box-primary">
+        <div class="box-header">
+            <h2 class="box-title">Available Units</h2>
+        </div>
+        <div class="box-body no-padding">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let unit of units">
+                        <td>{{unit.id}}</td>
+                        <td>{{unit.name}}</td>
+                        <td>{{unit.description}}</td>
+                        <td><button class="btn-primary btn">Edit</button></td>
+                        <td><button class="btn-danger btn" (click)="deleteUnit(true,unit.id)">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="box-footer box-solid">
+            <div class="pull-right">
+                <button class="btn-success btn">Add</button>
+            </div>
+        </div>
+    </div>
+</section>
+<button (click)="testDialog()">Test Dialog</button>
+<modal-dialog #deleteDialog [title]="'Confirm Delete?'" (cancelClick)="confirmDelete(false)" (confirmClick)="confirmDelete(true)">
+    Are you sure you wish to delete this unit?
+</modal-dialog>
+
